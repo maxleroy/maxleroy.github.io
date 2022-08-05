@@ -33,4 +33,7 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "webrick", "~> 1.7"
-gem "just-the-docs"
+gem "just-the-docs", git: "https://github.com/just-the-docs/just-the-docs"
+group :jekyll_plugins do
+  gem "jekyll-remote-theme", "~> 0.4.2"
+end
