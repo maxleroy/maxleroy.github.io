@@ -1,4 +1,5 @@
 site_name: Api specifications
+site_url: https://maxleroy.github.io
 
 plugins:
   - search
