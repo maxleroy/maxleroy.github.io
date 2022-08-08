@@ -1,0 +1,1123 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://maxleroy.github.io/fetching-data/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>Fetching data - Api specifications</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fetching-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Api specifications" class="md-header__button md-logo" aria-label="Api specifications" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Api specifications
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fetching data
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Api specifications" class="md-nav__button md-logo" aria-label="Api specifications" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Api specifications
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../content-negotiation/" class="md-nav__link">
+        Content negotiation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../document-structure/" class="md-nav__link">
+        Document structure
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Fetching data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Fetching data
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-data" class="md-nav__link">
+     Fetching Data
+  </a>
+  
+    <nav class="md-nav" aria-label=" Fetching Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetching-resources" class="md-nav__link">
+     Fetching Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Fetching Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#200-ok" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-relationships" class="md-nav__link">
+     Fetching Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label=" Fetching Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses_1" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#200-ok_1" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found_1" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_1" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inclusion-of-related-resources" class="md-nav__link">
+     Inclusion of Related Resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse-fieldsets" class="md-nav__link">
+     Sparse Fieldsets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+     Sorting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+     Pagination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+     Filtering
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../crud/" class="md-nav__link">
+        CRUD resources
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-parameters/" class="md-nav__link">
+        Query parameters
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#fetching-data" class="md-nav__link">
+     Fetching Data
+  </a>
+  
+    <nav class="md-nav" aria-label=" Fetching Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetching-resources" class="md-nav__link">
+     Fetching Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Fetching Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#200-ok" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetching-relationships" class="md-nav__link">
+     Fetching Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label=" Fetching Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses_1" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#200-ok_1" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found_1" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_1" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inclusion-of-related-resources" class="md-nav__link">
+     Inclusion of Related Resources
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sparse-fieldsets" class="md-nav__link">
+     Sparse Fieldsets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sorting" class="md-nav__link">
+     Sorting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+     Pagination
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+     Filtering
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>Fetching data</h1>
+
+<h2 id="fetching-data"><a href="#fetching" id="fetching" class="headerlink"></a> Fetching Data</h2>
+<p>Data, including resources and relationships, can be fetched by sending a
+<code>GET</code> request to an endpoint.</p>
+<p>Responses can be further refined with the optional features described below.</p>
+<h3 id="fetching-resources"><a href="#fetching-resources" id="fetching-resources" class="headerlink"></a> Fetching Resources</h3>
+<p>A server <strong>MUST</strong> support fetching resource data for every URL provided as:</p>
+<ul>
+<li>a <code>self</code> link as part of the top-level links object</li>
+<li>a <code>self</code> link as part of a resource-level links object</li>
+<li>a <code>related</code> link as part of a relationship-level links object</li>
+</ul>
+<p>For example, the following request fetches a collection of articles:</p>
+<pre><code class="language-http">GET /articles HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>The following request fetches an article:</p>
+<pre><code class="language-http">GET /articles/1 HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>And the following request fetches an article's author:</p>
+<pre><code class="language-http">GET /articles/1/author HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<h4 id="responses"><a href="#fetching-resources-responses" id="fetching-resources-responses" class="headerlink"></a> Responses</h4>
+<h5 id="200-ok"><a href="#fetching-resources-responses-200" id="fetching-resources-responses-200" class="headerlink"></a> 200 OK</h5>
+<p>A server <strong>MUST</strong> respond to a successful request to fetch an individual
+resource or resource collection with a <code>200 OK</code> response.</p>
+<p>A server <strong>MUST</strong> respond to a successful request to fetch a resource
+collection with an array of [resource objects] or an empty array (<code>[]</code>) as
+the response document's primary data.</p>
+<p>For example, a <code>GET</code> request to a collection of articles could return:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;http://example.com/articles&quot;
+  },
+  &quot;data&quot;: [{
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;JSON:API paints my bikeshed!&quot;
+    }
+  }, {
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;2&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;Rails is Omakase&quot;
+    }
+  }]
+}
+</code></pre>
+<p>A similar response representing an empty collection would be:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;http://example.com/articles&quot;
+  },
+  &quot;data&quot;: []
+}
+</code></pre>
+<p>A server <strong>MUST</strong> respond to a successful request to fetch an individual
+resource with a [resource object][resource objects] or <code>null</code> provided as
+the response document's primary data.</p>
+<p><code>null</code> is only an appropriate response when the requested URL is one that
+might correspond to a single resource, but doesn't currently.</p>
+<blockquote>
+<p>Note: Consider, for example, a request to fetch a to-one related resource link.
+This request would respond with <code>null</code> when the relationship is empty (such that
+the link is corresponding to no resources) but with the single related resource's
+[resource object][resource objects] otherwise.</p>
+</blockquote>
+<p>For example, a <code>GET</code> request to an individual article could return:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;http://example.com/articles/1&quot;
+  },
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;JSON:API paints my bikeshed!&quot;
+    },
+    &quot;relationships&quot;: {
+      &quot;author&quot;: {
+        &quot;links&quot;: {
+          &quot;related&quot;: &quot;http://example.com/articles/1/author&quot;
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p>If the above article's author is missing, then a <code>GET</code> request to that related
+resource would return:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;http://example.com/articles/1/author&quot;
+  },
+  &quot;data&quot;: null
+}
+</code></pre>
+<h5 id="404-not-found"><a href="#fetching-resources-responses-404" id="fetching-resources-responses-404" class="headerlink"></a> 404 Not Found</h5>
+<p>A server <strong>MUST</strong> respond with <code>404 Not Found</code> when processing a request to
+fetch a single resource that does not exist, except when the request warrants a
+<code>200 OK</code> response with <code>null</code> as the primary data (as described above).</p>
+<h5 id="other-responses"><a href="#fetching-resources-responses-other" id="fetching-resources-responses-other" class="headerlink"></a> Other Responses</h5>
+<p>A server <strong>MAY</strong> respond with other HTTP status codes.</p>
+<p>A server <strong>MAY</strong> include [error details] with error responses.</p>
+<p>A server <strong>MUST</strong> prepare responses, and a client <strong>MUST</strong> interpret
+responses, in accordance with
+<a href="http://tools.ietf.org/html/rfc7231"><code>HTTP semantics</code></a>.</p>
+<h3 id="fetching-relationships"><a href="#fetching-relationships" id="fetching-relationships" class="headerlink"></a> Fetching Relationships</h3>
+<p>A server <strong>MUST</strong> support fetching relationship data for every relationship URL
+provided as a <code>self</code> link as part of a relationship's <code>links</code> object.</p>
+<p>For example, the following request fetches data about an article's comments:</p>
+<pre><code class="language-http">GET /articles/1/relationships/comments HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>And the following request fetches data about an article's author:</p>
+<pre><code class="language-http">GET /articles/1/relationships/author HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<h4 id="responses_1"><a href="#fetching-relationships-responses" id="fetching-relationships-responses" class="headerlink"></a> Responses</h4>
+<h5 id="200-ok_1"><a href="#fetching-relationships-responses-200" id="fetching-relationships-responses-200" class="headerlink"></a> 200 OK</h5>
+<p>A server <strong>MUST</strong> respond to a successful request to fetch a relationship
+with a <code>200 OK</code> response.</p>
+<p>The primary data in the response document <strong>MUST</strong> match the appropriate
+value for [resource linkage], as described above for
+[relationship objects][relationships].</p>
+<p>The top-level [links object][links] <strong>MAY</strong> contain <code>self</code> and <code>related</code> links,
+as described above for [relationship objects][relationships].</p>
+<p>For example, a <code>GET</code> request to a URL from a to-one relationship link could
+return:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;/articles/1/relationships/author&quot;,
+    &quot;related&quot;: &quot;/articles/1/author&quot;
+  },
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;people&quot;,
+    &quot;id&quot;: &quot;12&quot;
+  }
+}
+</code></pre>
+<p>If the above relationship is empty, then a <code>GET</code> request to the same URL would
+return:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;/articles/1/relationships/author&quot;,
+    &quot;related&quot;: &quot;/articles/1/author&quot;
+  },
+  &quot;data&quot;: null
+}
+</code></pre>
+<p>A <code>GET</code> request to a URL from a to-many relationship link could return:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;/articles/1/relationships/tags&quot;,
+    &quot;related&quot;: &quot;/articles/1/tags&quot;
+  },
+  &quot;data&quot;: [
+    { &quot;type&quot;: &quot;tags&quot;, &quot;id&quot;: &quot;2&quot; },
+    { &quot;type&quot;: &quot;tags&quot;, &quot;id&quot;: &quot;3&quot; }
+  ]
+}
+</code></pre>
+<p>If the above relationship is empty, then a <code>GET</code> request to the same URL would
+return:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+
+{
+  &quot;links&quot;: {
+    &quot;self&quot;: &quot;/articles/1/relationships/tags&quot;,
+    &quot;related&quot;: &quot;/articles/1/tags&quot;
+  },
+  &quot;data&quot;: []
+}
+</code></pre>
+<h5 id="404-not-found_1"><a href="#fetching-relationships-responses-404" id="fetching-relationships-responses-404" class="headerlink"></a> 404 Not Found</h5>
+<p>A server <strong>MUST</strong> return <code>404 Not Found</code> when processing a request to fetch
+a relationship link URL that does not exist.</p>
+<blockquote>
+<p>Note: This can happen when the parent resource of the relationship
+does not exist. For example, when <code>/articles/1</code> does not exist, request to
+<code>/articles/1/relationships/tags</code> returns <code>404 Not Found</code>.</p>
+</blockquote>
+<p>If a relationship link URL exists but the relationship is empty, then
+<code>200 OK</code> <strong>MUST</strong> be returned, as described above.</p>
+<h5 id="other-responses_1"><a href="#fetching-relationships-responses-other" id="fetching-relationships-responses-other" class="headerlink"></a> Other Responses</h5>
+<p>A server <strong>MAY</strong> respond with other HTTP status codes.</p>
+<p>A server <strong>MAY</strong> include [error details] with error responses.</p>
+<p>A server <strong>MUST</strong> prepare responses, and a client <strong>MUST</strong> interpret
+responses, in accordance with
+<a href="http://tools.ietf.org/html/rfc7231"><code>HTTP semantics</code></a>.</p>
+<h3 id="inclusion-of-related-resources"><a href="#fetching-includes" id="fetching-includes" class="headerlink"></a> Inclusion of Related Resources</h3>
+<p>An endpoint <strong>MAY</strong> return resources related to the primary data by default.</p>
+<p>An endpoint <strong>MAY</strong> also support an <code>include</code> request parameter to allow the
+client to customize which related resources should be returned.</p>
+<p>If an endpoint does not support the <code>include</code> parameter, it <strong>MUST</strong> respond
+with <code>400 Bad Request</code> to any requests that include it.</p>
+<p>If an endpoint supports the <code>include</code> parameter and a client supplies it,
+the server <strong>MUST NOT</strong> include unrequested [resource objects] in the <code>included</code>
+section of the [compound document].</p>
+<p>The value of the <code>include</code> parameter <strong>MUST</strong> be a comma-separated (U+002C
+COMMA, ",") list of relationship paths. A relationship path is a dot-separated
+(U+002E FULL-STOP, ".") list of [relationship][relationships] names.</p>
+<p>If a server is unable to identify a relationship path or does not support
+inclusion of resources from a path, it <strong>MUST</strong> respond with 400 Bad Request.</p>
+<blockquote>
+<p>Note: For example, a relationship path could be <code>comments.author</code>, where
+<code>comments</code> is a relationship listed under a <code>articles</code> [resource object][resource objects], and
+<code>author</code> is a relationship listed under a <code>comments</code> [resource object][resource objects].</p>
+</blockquote>
+<p>For instance, comments could be requested with an article:</p>
+<pre><code class="language-http">GET /articles/1?include=comments HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>In order to request resources related to other resources, a dot-separated path
+for each relationship name can be specified:</p>
+<pre><code class="language-http">GET /articles/1?include=comments.author HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<blockquote>
+<p>Note: Because [compound documents][compound document] require full linkage
+(except when relationship linkage is excluded by sparse fieldsets), intermediate
+resources in a multi-part path must be returned along with the leaf nodes. For
+example, a response to a request for <code>comments.author</code> should include <code>comments</code>
+as well as the <code>author</code> of each of those <code>comments</code>.</p>
+<p>Note: A server may choose to expose a deeply nested relationship such as
+<code>comments.author</code> as a direct relationship with an alias such as
+<code>comment-authors</code>. This would allow a client to request
+<code>/articles/1?include=comment-authors</code> instead of
+<code>/articles/1?include=comments.author</code>. By abstracting the nested
+relationship with an alias, the server can still provide full linkage in
+compound documents without including potentially unwanted intermediate
+resources.</p>
+</blockquote>
+<p>Multiple related resources can be requested in a comma-separated list:</p>
+<pre><code class="language-http">GET /articles/1?include=comments.author,ratings HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>Furthermore, related resources can be requested from a relationship endpoint:</p>
+<pre><code class="language-http">GET /articles/1/relationships/comments?include=comments.author HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>In this case, the primary data would be a collection of
+[resource identifier objects][resource identifier object] that represent linkage to comments for an article,
+while the full comments and comment authors would be returned as included data.</p>
+<blockquote>
+<p>Note: This section applies to any endpoint that responds with primary
+data, regardless of the request type. For instance, a server could support
+the inclusion of related resources along with a <code>POST</code> request to create a
+resource or relationship.</p>
+</blockquote>
+<h3 id="sparse-fieldsets"><a href="#fetching-sparse-fieldsets" id="fetching-sparse-fieldsets" class="headerlink"></a> Sparse Fieldsets</h3>
+<p>A client <strong>MAY</strong> request that an endpoint return only specific [fields] in the
+response on a per-type basis by including a <code>fields[TYPE]</code> parameter.</p>
+<p>The value of the <code>fields</code> parameter <strong>MUST</strong> be a comma-separated (U+002C
+COMMA, ",") list that refers to the name(s) of the fields to be returned.
+An empty value indicates that no fields should be returned.</p>
+<p>If a client requests a restricted set of [fields] for a given resource type,
+an endpoint <strong>MUST NOT</strong> include additional [fields] in resource objects of
+that type in its response.</p>
+<p>If a client does not specify the set of [fields] for a given resource type,
+the server <strong>MAY</strong> send all fields, a subset of fields, or no fields for that
+resource type.</p>
+<pre><code class="language-http">GET /articles?include=author&amp;fields[articles]=title,body&amp;fields[people]=name HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<blockquote>
+<p>Note: The above example URI shows unencoded <code>[</code> and <code>]</code> characters simply for
+readability. In practice, these characters must be percent-encoded, per the
+requirements <a href="http://tools.ietf.org/html/rfc3986#section-3.4">in RFC 3986</a>.</p>
+<p>Note: This section applies to any endpoint that responds with resources as
+primary or included data, regardless of the request type. For instance, a
+server could support sparse fieldsets along with a <code>POST</code> request to create
+a resource.</p>
+</blockquote>
+<h3 id="sorting"><a href="#fetching-sorting" id="fetching-sorting" class="headerlink"></a> Sorting</h3>
+<p>A server <strong>MAY</strong> choose to support requests to sort resource collections
+according to one or more criteria ("sort fields").</p>
+<blockquote>
+<p>Note: Although recommended, sort fields do not necessarily need to
+correspond to resource attribute and association names.</p>
+<p>Note: It is recommended that dot-separated (U+002E FULL-STOP, ".") sort
+fields be used to request sorting based upon relationship attributes. For
+example, a sort field of <code>author.name</code> could be used to request that the
+primary data be sorted based upon the <code>name</code> attribute of the <code>author</code>
+relationship.</p>
+</blockquote>
+<p>An endpoint <strong>MAY</strong> support requests to sort the primary data with a <code>sort</code>
+query parameter. The value for <code>sort</code> <strong>MUST</strong> represent sort fields.</p>
+<pre><code class="language-http">GET /people?sort=age HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>An endpoint <strong>MAY</strong> support multiple sort fields by allowing comma-separated
+(U+002C COMMA, ",") sort fields. Sort fields <strong>SHOULD</strong> be applied in the
+order specified.</p>
+<pre><code class="language-http">GET /people?sort=age,name HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>The sort order for each sort field <strong>MUST</strong> be ascending unless it is prefixed
+with a minus (U+002D HYPHEN-MINUS, "-"), in which case it <strong>MUST</strong> be descending.</p>
+<pre><code class="language-http">GET /articles?sort=-created,title HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<p>The above example should return the newest articles first. Any articles
+created on the same date will then be sorted by their title in ascending
+alphabetical order.</p>
+<p>If the server does not support sorting as specified in the query parameter
+<code>sort</code>, it <strong>MUST</strong> return <code>400 Bad Request</code>.</p>
+<p>If sorting is supported by the server and requested by the client via query
+parameter <code>sort</code>, the server <strong>MUST</strong> return elements of the top-level
+<code>data</code> array of the response ordered according to the criteria specified.
+The server <strong>MAY</strong> apply default sorting rules to top-level <code>data</code> if
+request parameter <code>sort</code> is not specified.</p>
+<blockquote>
+<p>Note: This section applies to any endpoint that responds with a resource
+collection as primary data, regardless of the request type.</p>
+</blockquote>
+<h3 id="pagination"><a href="#fetching-pagination" id="fetching-pagination" class="headerlink"></a> Pagination</h3>
+<p>A server <strong>MAY</strong> choose to limit the number of resources returned in a response
+to a subset ("page") of the whole set available.</p>
+<p>A server <strong>MAY</strong> provide links to traverse a paginated data set ("pagination
+links").</p>
+<p>Pagination links <strong>MUST</strong> appear in the links object that corresponds to a
+collection. To paginate the primary data, supply pagination links in the
+top-level <code>links</code> object. To paginate an included collection returned in
+a [compound document], supply pagination links in the corresponding links
+object.</p>
+<p>The following keys <strong>MUST</strong> be used for pagination links:</p>
+<ul>
+<li><code>first</code>: the first page of data</li>
+<li><code>last</code>: the last page of data</li>
+<li><code>prev</code>: the previous page of data</li>
+<li><code>next</code>: the next page of data</li>
+</ul>
+<p>Keys <strong>MUST</strong> either be omitted or have a <code>null</code> value to indicate that a
+particular link is unavailable.</p>
+<p>Concepts of order, as expressed in the naming of pagination links, <strong>MUST</strong>
+remain consistent with JSON:API's <a href="#fetching-sorting">sorting rules</a>.</p>
+<p>The <code>page</code> query parameter is reserved for pagination. Servers and clients
+<strong>SHOULD</strong> use this key for pagination operations.</p>
+<blockquote>
+<p>Note: JSON:API is agnostic about the pagination strategy used by a server.
+Effective pagination strategies include (but are not limited to):
+page-based, offset-based, and cursor-based. The <code>page</code> query parameter can
+be used as a basis for any of these strategies. For example, a page-based
+strategy might use query parameters such as <code>page[number]</code> and <code>page[size]</code>,
+an offset-based strategy might use <code>page[offset]</code> and <code>page[limit]</code>, while a
+cursor-based strategy might use <code>page[cursor]</code>.</p>
+<p>Note: The example query parameters above use unencoded <code>[</code> and <code>]</code> characters
+simply for readability. In practice, these characters must be percent-encoded,
+per the requirements in <a href="http://tools.ietf.org/html/rfc3986#section-3.4">RFC 3986</a>.</p>
+<p>Note: This section applies to any endpoint that responds with a resource
+collection as primary data, regardless of the request type.</p>
+</blockquote>
+<h3 id="filtering"><a href="#fetching-filtering" id="fetching-filtering" class="headerlink"></a> Filtering</h3>
+<p>The <code>filter</code> query parameter is reserved for filtering data. Servers and clients
+<strong>SHOULD</strong> use this key for filtering operations.</p>
+<blockquote>
+<p>Note: JSON:API is agnostic about the strategies supported by a server. The
+<code>filter</code> query parameter can be used as the basis for any number of filtering
+strategies.</p>
+</blockquote>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../document-structure/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Document structure" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Document structure
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../crud/" class="md-footer__link md-footer__link--next" aria-label="Next: CRUD resources" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              CRUD resources
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "search.highlight"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

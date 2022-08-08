@@ -1,0 +1,1571 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://maxleroy.github.io/crud/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>CRUD resources - Api specifications</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#creating-updating-and-deleting-resources" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Api specifications" class="md-header__button md-logo" aria-label="Api specifications" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Api specifications
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CRUD resources
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Api specifications" class="md-nav__button md-logo" aria-label="Api specifications" data-md-component="logo">
+      
+  <img src="../assets/images/logo.svg" alt="logo">
+
+    </a>
+    Api specifications
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../content-negotiation/" class="md-nav__link">
+        Content negotiation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../document-structure/" class="md-nav__link">
+        Document structure
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fetching-data/" class="md-nav__link">
+        Fetching data
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          CRUD resources
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        CRUD resources
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-updating-and-deleting-resources" class="md-nav__link">
+     Creating, Updating and Deleting Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Creating, Updating and Deleting Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-resources" class="md-nav__link">
+     Creating Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Creating Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-generated-ids" class="md-nav__link">
+     Client-Generated IDs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#201-created" class="md-nav__link">
+     201 Created
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#403-forbidden" class="md-nav__link">
+     403 Forbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#409-conflict" class="md-nav__link">
+     409 Conflict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-resources" class="md-nav__link">
+     Updating Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Updating Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-resources-attributes" class="md-nav__link">
+     Updating a Resource's Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-resources-relationships" class="md-nav__link">
+     Updating a Resource's Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_1" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted_1" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-ok" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content_1" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#403-forbidden_1" class="md-nav__link">
+     403 Forbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found_1" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#409-conflict_1" class="md-nav__link">
+     409 Conflict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_1" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-relationships" class="md-nav__link">
+     Updating Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label=" Updating Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#updating-to-one-relationships" class="md-nav__link">
+     Updating To-One Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-to-many-relationships" class="md-nav__link">
+     Updating To-Many Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_2" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted_2" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content_2" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-ok_1" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#403-forbidden_2" class="md-nav__link">
+     403 Forbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_2" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-resources" class="md-nav__link">
+     Deleting Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Deleting Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses_3" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted_3" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content_3" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-ok_2" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found_2" class="md-nav__link">
+     404 NOT FOUND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_3" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query-parameters/" class="md-nav__link">
+        Query parameters
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../errors/" class="md-nav__link">
+        Errors
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-updating-and-deleting-resources" class="md-nav__link">
+     Creating, Updating and Deleting Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Creating, Updating and Deleting Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-resources" class="md-nav__link">
+     Creating Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Creating Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-generated-ids" class="md-nav__link">
+     Client-Generated IDs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#201-created" class="md-nav__link">
+     201 Created
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#403-forbidden" class="md-nav__link">
+     403 Forbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#409-conflict" class="md-nav__link">
+     409 Conflict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-resources" class="md-nav__link">
+     Updating Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Updating Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-resources-attributes" class="md-nav__link">
+     Updating a Resource's Attributes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-a-resources-relationships" class="md-nav__link">
+     Updating a Resource's Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_1" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted_1" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-ok" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content_1" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#403-forbidden_1" class="md-nav__link">
+     403 Forbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found_1" class="md-nav__link">
+     404 Not Found
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#409-conflict_1" class="md-nav__link">
+     409 Conflict
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_1" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-relationships" class="md-nav__link">
+     Updating Relationships
+  </a>
+  
+    <nav class="md-nav" aria-label=" Updating Relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#updating-to-one-relationships" class="md-nav__link">
+     Updating To-One Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-to-many-relationships" class="md-nav__link">
+     Updating To-Many Relationships
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_2" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted_2" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content_2" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-ok_1" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#403-forbidden_2" class="md-nav__link">
+     403 Forbidden
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_2" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deleting-resources" class="md-nav__link">
+     Deleting Resources
+  </a>
+  
+    <nav class="md-nav" aria-label=" Deleting Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses_3" class="md-nav__link">
+     Responses
+  </a>
+  
+    <nav class="md-nav" aria-label=" Responses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#202-accepted_3" class="md-nav__link">
+     202 Accepted
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#204-no-content_3" class="md-nav__link">
+     204 No Content
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#200-ok_2" class="md-nav__link">
+     200 OK
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#404-not-found_2" class="md-nav__link">
+     404 NOT FOUND
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-responses_3" class="md-nav__link">
+     Other Responses
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+  <h1>CRUD resources</h1>
+
+<h2 id="creating-updating-and-deleting-resources"><a href="#crud" id="crud" class="headerlink"></a> Creating, Updating and Deleting Resources</h2>
+<p>A server <strong>MAY</strong> allow resources of a given type to be created. It <strong>MAY</strong>
+also allow existing resources to be modified or deleted.</p>
+<p>A request <strong>MUST</strong> completely succeed or fail (in a single "transaction"). No
+partial updates are allowed.</p>
+<blockquote>
+<p>Note: The <code>type</code> member is required in every [resource object][resource objects] throughout requests and
+responses in JSON:API. There are some cases, such as when <code>POST</code>ing to an
+endpoint representing heterogeneous data, when the <code>type</code> could not be inferred
+from the endpoint. However, picking and choosing when it is required would be
+confusing; it would be hard to remember when it was required and when it was
+not. Therefore, to improve consistency and minimize confusion, <code>type</code> is
+always required.</p>
+</blockquote>
+<h3 id="creating-resources"><a href="#crud-creating" id="crud-creating" class="headerlink"></a> Creating Resources</h3>
+<p>A resource can be created by sending a <code>POST</code> request to a URL that represents
+a collection of resources. The request <strong>MUST</strong> include a single [resource object][resource objects]
+as primary data. The [resource object][resource objects] <strong>MUST</strong> contain at least a <code>type</code> member.</p>
+<p>For instance, a new photo might be created with the following request:</p>
+<pre><code class="language-http">POST /photos HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;photos&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;Ember Hamster&quot;,
+      &quot;src&quot;: &quot;http://example.com/images/productivity.png&quot;
+    },
+    &quot;relationships&quot;: {
+      &quot;photographer&quot;: {
+        &quot;data&quot;: { &quot;type&quot;: &quot;people&quot;, &quot;id&quot;: &quot;9&quot; }
+      }
+    }
+  }
+}
+</code></pre>
+<p>If a relationship is provided in the <code>relationships</code> member of the
+[resource object][resource objects], its value <strong>MUST</strong> be a relationship object with a <code>data</code>
+member. The value of this key represents the [linkage][resource linkage] the new resource is to
+have.</p>
+<h4 id="client-generated-ids"><a href="#crud-creating-client-ids" id="crud-creating-client-ids" class="headerlink"></a> Client-Generated IDs</h4>
+<p>A server <strong>MAY</strong> accept a client-generated ID along with a request to create
+a resource. An ID <strong>MUST</strong> be specified with an <code>id</code> key, the value of
+which <strong>MUST</strong> be a universally unique identifier. The client <strong>SHOULD</strong> use
+a properly generated and formatted <em>UUID</em> as described in RFC 4122
+[<a href="http://tools.ietf.org/html/rfc4122.html">RFC4122</a>].</p>
+<blockquote>
+<p>NOTE: In some use-cases, such as importing data from another source, it
+may be possible to use something other than a UUID that is still guaranteed
+to be globally unique. Do not use anything other than a UUID unless you are
+100% confident that the strategy you are using indeed generates globally
+unique identifiers.</p>
+</blockquote>
+<p>For example:</p>
+<pre><code class="language-http">POST /photos HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;photos&quot;,
+    &quot;id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;Ember Hamster&quot;,
+      &quot;src&quot;: &quot;http://example.com/images/productivity.png&quot;
+    }
+  }
+}
+</code></pre>
+<p>A server <strong>MUST</strong> return <code>403 Forbidden</code> in response to an unsupported request
+to create a resource with a client-generated ID.</p>
+<h4 id="responses"><a href="#crud-creating-responses" id="crud-creating-responses" class="headerlink"></a> Responses</h4>
+<h5 id="201-created"><a href="#crud-creating-responses-201" id="crud-creating-responses-201" class="headerlink"></a> 201 Created</h5>
+<p>If a <code>POST</code> request did not include a <a href="#crud-creating-client-ids">Client-Generated
+ID</a> and the requested resource has been created
+successfully, the server <strong>MUST</strong> return a <code>201 Created</code> status code.</p>
+<p>The response <strong>SHOULD</strong> include a <code>Location</code> header identifying the location
+of the newly created resource.</p>
+<p>The response <strong>MUST</strong> also include a document that contains the primary
+resource created.</p>
+<p>If the [resource object][resource objects] returned by the response contains a <code>self</code> key in its
+<code>links</code> member and a <code>Location</code> header is provided, the value of the <code>self</code>
+member <strong>MUST</strong> match the value of the <code>Location</code> header.</p>
+<pre><code class="language-http">HTTP/1.1 201 Created
+Location: http://example.com/photos/550e8400-e29b-41d4-a716-446655440000
+Content-Type: application/vnd.api+json
+
+{
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;photos&quot;,
+    &quot;id&quot;: &quot;550e8400-e29b-41d4-a716-446655440000&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;Ember Hamster&quot;,
+      &quot;src&quot;: &quot;http://example.com/images/productivity.png&quot;
+    },
+    &quot;links&quot;: {
+      &quot;self&quot;: &quot;http://example.com/photos/550e8400-e29b-41d4-a716-446655440000&quot;
+    }
+  }
+}
+</code></pre>
+<h5 id="202-accepted"><a href="#crud-creating-responses-202" id="crud-creating-responses-202" class="headerlink"></a> 202 Accepted</h5>
+<p>If a request to create a resource has been accepted for processing, but the
+processing has not been completed by the time the server responds, the
+server <strong>MUST</strong> return a <code>202 Accepted</code> status code.</p>
+<h5 id="204-no-content"><a href="#crud-creating-responses-204" id="crud-creating-responses-204" class="headerlink"></a> 204 No Content</h5>
+<p>If a <code>POST</code> request <em>did</em> include a <a href="#crud-creating-client-ids">Client-Generated
+ID</a> and the requested resource has been created
+successfully, the server <strong>MUST</strong> return either a <code>201 Created</code> status code
+and response document (as described above) or a <code>204 No Content</code> status code
+with no response document.</p>
+<blockquote>
+<p>Note: If a <code>204</code> response is received the client should consider the resource
+object sent in the request to be accepted by the server, as if the server
+had returned it back in a <code>201</code> response.</p>
+</blockquote>
+<h5 id="403-forbidden"><a href="#crud-creating-responses-403" id="crud-creating-responses-403" class="headerlink"></a> 403 Forbidden</h5>
+<p>A server <strong>MAY</strong> return <code>403 Forbidden</code> in response to an unsupported request
+to create a resource.</p>
+<h5 id="404-not-found"><a href="#crud-creating-responses-404" id="crud-creating-responses-404" class="headerlink"></a> 404 Not Found</h5>
+<p>A server <strong>MUST</strong> return <code>404 Not Found</code> when processing a request that
+references a related resource that does not exist.</p>
+<h5 id="409-conflict"><a href="#crud-creating-responses-409" id="crud-creating-responses-409" class="headerlink"></a> 409 Conflict</h5>
+<p>A server <strong>MUST</strong> return <code>409 Conflict</code> when processing a <code>POST</code> request to
+create a resource with a client-generated ID that already exists.</p>
+<p>A server <strong>MUST</strong> return <code>409 Conflict</code> when processing a <code>POST</code> request in
+which the [resource object][resource objects]'s <code>type</code> is not among the type(s) that constitute the
+collection represented by the endpoint.</p>
+<p>A server <strong>SHOULD</strong> include error details and provide enough information to
+recognize the source of the conflict.</p>
+<h5 id="other-responses"><a href="#crud-creating-responses-other" id="crud-creating-responses-other" class="headerlink"></a> Other Responses</h5>
+<p>A server <strong>MAY</strong> respond with other HTTP status codes.</p>
+<p>A server <strong>MAY</strong> include [error details] with error responses.</p>
+<p>A server <strong>MUST</strong> prepare responses, and a client <strong>MUST</strong> interpret
+responses, in accordance with
+<a href="http://tools.ietf.org/html/rfc7231"><code>HTTP semantics</code></a>.</p>
+<h3 id="updating-resources"><a href="#crud-updating" id="crud-updating" class="headerlink"></a> Updating Resources</h3>
+<p>A resource can be updated by sending a <code>PATCH</code> request to the URL that
+represents the resource.</p>
+<p>The URL for a resource can be obtained in the <code>self</code> link of the resource
+object. Alternatively, when a <code>GET</code> request returns a single [resource object][resource objects] as
+primary data, the same request URL can be used for updates.</p>
+<p>The <code>PATCH</code> request <strong>MUST</strong> include a single [resource object][resource objects] as primary data.
+The [resource object][resource objects] <strong>MUST</strong> contain <code>type</code> and <code>id</code> members.</p>
+<p>For example:</p>
+<pre><code class="language-http">PATCH /articles/1 HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;To TDD or Not&quot;
+    }
+  }
+}
+</code></pre>
+<h4 id="updating-a-resources-attributes"><a href="#crud-updating-resource-attributes" id="crud-updating-resource-attributes" class="headerlink"></a> Updating a Resource's Attributes</h4>
+<p>Any or all of a resource's [attributes] <strong>MAY</strong> be included in the resource
+object included in a <code>PATCH</code> request.</p>
+<p>If a request does not include all of the [attributes] for a resource, the server
+<strong>MUST</strong> interpret the missing [attributes] as if they were included with their
+current values. The server <strong>MUST NOT</strong> interpret missing attributes as <code>null</code>
+values.</p>
+<p>For example, the following <code>PATCH</code> request is interpreted as a request to
+update only the <code>title</code> and <code>text</code> attributes of an article:</p>
+<pre><code class="language-http">PATCH /articles/1 HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;attributes&quot;: {
+      &quot;title&quot;: &quot;To TDD or Not&quot;,
+      &quot;text&quot;: &quot;TLDR; It's complicated... but check your test coverage regardless.&quot;
+    }
+  }
+}
+</code></pre>
+<h4 id="updating-a-resources-relationships"><a href="#crud-updating-resource-relationships" id="crud-updating-resource-relationships" class="headerlink"></a> Updating a Resource's Relationships</h4>
+<p>Any or all of a resource's [relationships] <strong>MAY</strong> be included in the resource
+object included in a <code>PATCH</code> request.</p>
+<p>If a request does not include all of the [relationships] for a resource, the server
+<strong>MUST</strong> interpret the missing [relationships] as if they were included with their
+current values. It <strong>MUST NOT</strong> interpret them as <code>null</code> or empty values.</p>
+<p>If a relationship is provided in the <code>relationships</code> member of a resource
+object in a <code>PATCH</code> request, its value <strong>MUST</strong> be a relationship object
+with a <code>data</code> member. The relationship's value will be replaced with the
+value specified in this member.</p>
+<p>For instance, the following <code>PATCH</code> request will update the <code>author</code> relationship of an article:</p>
+<pre><code class="language-http">PATCH /articles/1 HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;relationships&quot;: {
+      &quot;author&quot;: {
+        &quot;data&quot;: { &quot;type&quot;: &quot;people&quot;, &quot;id&quot;: &quot;1&quot; }
+      }
+    }
+  }
+}
+</code></pre>
+<p>Likewise, the following <code>PATCH</code> request performs a complete replacement of
+the <code>tags</code> for an article:</p>
+<pre><code class="language-http">PATCH /articles/1 HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: {
+    &quot;type&quot;: &quot;articles&quot;,
+    &quot;id&quot;: &quot;1&quot;,
+    &quot;relationships&quot;: {
+      &quot;tags&quot;: {
+        &quot;data&quot;: [
+          { &quot;type&quot;: &quot;tags&quot;, &quot;id&quot;: &quot;2&quot; },
+          { &quot;type&quot;: &quot;tags&quot;, &quot;id&quot;: &quot;3&quot; }
+        ]
+      }
+    }
+  }
+}
+</code></pre>
+<p>A server <strong>MAY</strong> reject an attempt to do a full replacement of a to-many
+relationship. In such a case, the server <strong>MUST</strong> reject the entire update,
+and return a <code>403 Forbidden</code> response.</p>
+<blockquote>
+<p>Note: Since full replacement may be a very dangerous operation, a server
+may choose to disallow it. For example, a server may reject full replacement if
+it has not provided the client with the full list of associated objects, and
+does not want to allow deletion of records the client has not seen.</p>
+</blockquote>
+<h4 id="responses_1"><a href="#crud-updating-responses" id="crud-updating-responses" class="headerlink"></a> Responses</h4>
+<h5 id="202-accepted_1"><a href="#crud-updating-responses-202" id="crud-updating-responses-202" class="headerlink"></a> 202 Accepted</h5>
+<p>If an update request has been accepted for processing, but the processing
+has not been completed by the time the server responds, the server <strong>MUST</strong>
+return a <code>202 Accepted</code> status code.</p>
+<h5 id="200-ok"><a href="#crud-updating-responses-200" id="crud-updating-responses-200" class="headerlink"></a> 200 OK</h5>
+<p>If a server accepts an update but also changes the resource(s) in ways other
+than those specified by the request (for example, updating the <code>updated-at</code>
+attribute or a computed <code>sha</code>), it <strong>MUST</strong> return a <code>200 OK</code> response. The
+response document <strong>MUST</strong> include a representation of the updated
+resource(s) as if a <code>GET</code> request was made to the request URL.</p>
+<p>A server <strong>MUST</strong> return a <code>200 OK</code> status code if an update is successful,
+the client's current fields remain up to date, and the server responds only
+with top-level [meta] data. In this case the server <strong>MUST NOT</strong> include a
+representation of the updated resource(s).</p>
+<h5 id="204-no-content_1"><a href="#crud-updating-responses-204" id="crud-updating-responses-204" class="headerlink"></a> 204 No Content</h5>
+<p>If an update is successful and the server doesn't update any fields besides
+those provided, the server <strong>MUST</strong> return either a <code>200 OK</code> status code and
+response document (as described above) or a <code>204 No Content</code> status code with no
+response document.</p>
+<h5 id="403-forbidden_1"><a href="#crud-updating-relationship-responses-403" id="crud-updating-relationship-responses-403" class="headerlink"></a> 403 Forbidden</h5>
+<p>A server <strong>MUST</strong> return <code>403 Forbidden</code> in response to an unsupported request
+to update a resource or relationship.</p>
+<h5 id="404-not-found_1"><a href="#crud-updating-responses-404" id="crud-updating-responses-404" class="headerlink"></a> 404 Not Found</h5>
+<p>A server <strong>MUST</strong> return <code>404 Not Found</code> when processing a request to modify
+a resource that does not exist.</p>
+<p>A server <strong>MUST</strong> return <code>404 Not Found</code> when processing a request that
+references a related resource that does not exist.</p>
+<h5 id="409-conflict_1"><a href="#crud-updating-responses-409" id="crud-updating-responses-409" class="headerlink"></a> 409 Conflict</h5>
+<p>A server <strong>MAY</strong> return <code>409 Conflict</code> when processing a <code>PATCH</code> request to
+update a resource if that update would violate other server-enforced
+constraints (such as a uniqueness constraint on a property other than <code>id</code>).</p>
+<p>A server <strong>MUST</strong> return <code>409 Conflict</code> when processing a <code>PATCH</code> request in
+which the resource object's <code>type</code> and <code>id</code> do not match the server's endpoint.</p>
+<p>A server <strong>SHOULD</strong> include error details and provide enough information to
+recognize the source of the conflict.</p>
+<h5 id="other-responses_1"><a href="#crud-updating-responses-other" id="crud-updating-responses-other" class="headerlink"></a> Other Responses</h5>
+<p>A server <strong>MAY</strong> respond with other HTTP status codes.</p>
+<p>A server <strong>MAY</strong> include [error details] with error responses.</p>
+<p>A server <strong>MUST</strong> prepare responses, and a client <strong>MUST</strong> interpret
+responses, in accordance with
+<a href="http://tools.ietf.org/html/rfc7231"><code>HTTP semantics</code></a>.</p>
+<h3 id="updating-relationships"><a href="#crud-updating-relationships" id="crud-updating-relationships" class="headerlink"></a> Updating Relationships</h3>
+<p>Although relationships can be modified along with resources (as described
+above), JSON:API also supports updating of relationships independently at
+URLs from [relationship links][relationships].</p>
+<blockquote>
+<p>Note: Relationships are updated without exposing the underlying server
+semantics, such as foreign keys. Furthermore, relationships can be updated
+without necessarily affecting the related resources. For example, if an article
+has many authors, it is possible to remove one of the authors from the article
+without deleting the person itself. Similarly, if an article has many tags, it
+is possible to add or remove tags. Under the hood on the server, the first
+of these examples might be implemented with a foreign key, while the second
+could be implemented with a join table, but the JSON:API protocol would be
+the same in both cases.</p>
+<p>Note: A server may choose to delete the underlying resource if a
+relationship is deleted (as a garbage collection measure).</p>
+</blockquote>
+<h4 id="updating-to-one-relationships"><a href="#crud-updating-to-one-relationships" id="crud-updating-to-one-relationships" class="headerlink"></a> Updating To-One Relationships</h4>
+<p>A server <strong>MUST</strong> respond to <code>PATCH</code> requests to a URL from a to-one
+[relationship link][relationships] as described below.</p>
+<p>The <code>PATCH</code> request <strong>MUST</strong> include a top-level member named <code>data</code> containing
+one of:</p>
+<ul>
+<li>a [resource identifier object] corresponding to the new related resource.</li>
+<li><code>null</code>, to remove the relationship.</li>
+</ul>
+<p>For example, the following request updates the author of an article:</p>
+<pre><code class="language-http">PATCH /articles/1/relationships/author HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: { &quot;type&quot;: &quot;people&quot;, &quot;id&quot;: &quot;12&quot; }
+}
+</code></pre>
+<p>And the following request clears the author of the same article:</p>
+<pre><code class="language-http">PATCH /articles/1/relationships/author HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: null
+}
+</code></pre>
+<p>If the relationship is updated successfully then the server <strong>MUST</strong> return
+a successful response.</p>
+<h4 id="updating-to-many-relationships"><a href="#crud-updating-to-many-relationships" id="crud-updating-to-many-relationships" class="headerlink"></a> Updating To-Many Relationships</h4>
+<p>A server <strong>MUST</strong> respond to <code>PATCH</code>, <code>POST</code>, and <code>DELETE</code> requests to a
+URL from a to-many [relationship link][relationships] as described below.</p>
+<p>For all request types, the body <strong>MUST</strong> contain a <code>data</code> member whose value
+is an empty array or an array of [resource identifier objects][resource identifier object].</p>
+<p>If a client makes a <code>PATCH</code> request to a URL from a to-many
+[relationship link][relationships], the server <strong>MUST</strong> either completely
+replace every member of the relationship, return an appropriate error response
+if some resources can not be found or accessed, or return a <code>403 Forbidden</code>
+response if complete replacement is not allowed by the server.</p>
+<p>For example, the following request replaces every tag for an article:</p>
+<pre><code class="language-http">PATCH /articles/1/relationships/tags HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: [
+    { &quot;type&quot;: &quot;tags&quot;, &quot;id&quot;: &quot;2&quot; },
+    { &quot;type&quot;: &quot;tags&quot;, &quot;id&quot;: &quot;3&quot; }
+  ]
+}
+</code></pre>
+<p>And the following request clears every tag for an article:</p>
+<pre><code class="language-http">PATCH /articles/1/relationships/tags HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: []
+}
+</code></pre>
+<p>If a client makes a <code>POST</code> request to a URL from a
+[relationship link][relationships], the server <strong>MUST</strong> add the specified
+members to the relationship unless they are already present. If a given <code>type</code>
+and <code>id</code> is already in the relationship, the server <strong>MUST NOT</strong> add it again.</p>
+<blockquote>
+<p>Note: This matches the semantics of databases that use foreign keys for
+has-many relationships. Document-based storage should check the has-many
+relationship before appending to avoid duplicates.</p>
+</blockquote>
+<p>If all of the specified resources can be added to, or are already present
+in, the relationship then the server <strong>MUST</strong> return a successful response.</p>
+<blockquote>
+<p>Note: This approach ensures that a request is successful if the server's
+state matches the requested state, and helps avoid pointless race conditions
+caused by multiple clients making the same changes to a relationship.</p>
+</blockquote>
+<p>In the following example, the comment with ID <code>123</code> is added to the list of
+comments for the article with ID <code>1</code>:</p>
+<pre><code class="language-http">POST /articles/1/relationships/comments HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: [
+    { &quot;type&quot;: &quot;comments&quot;, &quot;id&quot;: &quot;123&quot; }
+  ]
+}
+</code></pre>
+<p>If the client makes a <code>DELETE</code> request to a URL from a
+[relationship link][relationships] the server <strong>MUST</strong> delete the specified
+members from the relationship or return a <code>403 Forbidden</code> response. If all of
+the specified resources are able to be removed from, or are already missing
+from, the relationship then the server <strong>MUST</strong> return a successful response.</p>
+<blockquote>
+<p>Note: As described above for <code>POST</code> requests, this approach helps avoid
+pointless race conditions between multiple clients making the same changes.</p>
+</blockquote>
+<p>Relationship members are specified in the same way as in the <code>POST</code> request.</p>
+<p>In the following example, comments with IDs of <code>12</code> and <code>13</code> are removed
+from the list of comments for the article with ID <code>1</code>:</p>
+<pre><code class="language-http">DELETE /articles/1/relationships/comments HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+
+{
+  &quot;data&quot;: [
+    { &quot;type&quot;: &quot;comments&quot;, &quot;id&quot;: &quot;12&quot; },
+    { &quot;type&quot;: &quot;comments&quot;, &quot;id&quot;: &quot;13&quot; }
+  ]
+}
+</code></pre>
+<blockquote>
+<p>Note: RFC 7231 specifies that a DELETE request may include a body, but
+that a server may reject the request. This spec defines the semantics of a
+server, and we are defining its semantics for JSON:API.</p>
+</blockquote>
+<h4 id="responses_2"><a href="#crud-updating-relationship-responses" id="crud-updating-relationship-responses" class="headerlink"></a> Responses</h4>
+<h5 id="202-accepted_2"><a href="#crud-updating-relationship-responses-202" id="crud-updating-relationship-responses-202" class="headerlink"></a> 202 Accepted</h5>
+<p>If a relationship update request has been accepted for processing, but the
+processing has not been completed by the time the server responds, the
+server <strong>MUST</strong> return a <code>202 Accepted</code> status code.</p>
+<h5 id="204-no-content_2"><a href="#crud-updating-relationship-responses-204" id="crud-updating-relationship-responses-204" class="headerlink"></a> 204 No Content</h5>
+<p>A server <strong>MUST</strong> return a <code>204 No Content</code> status code if an update is
+successful and the representation of the resource in the request matches the
+result.</p>
+<blockquote>
+<p>Note: This is the appropriate response to a <code>POST</code> request sent to a URL
+from a to-many [relationship link][relationships] when that relationship already
+exists. It is also the appropriate response to a <code>DELETE</code> request sent to a URL
+from a to-many [relationship link][relationships] when that relationship does
+not exist.</p>
+</blockquote>
+<h5 id="200-ok_1"><a href="#crud-updating-relationship-responses-200" id="crud-updating-relationship-responses-200" class="headerlink"></a> 200 OK</h5>
+<p>If a server accepts an update but also changes the targeted relationship(s)
+in other ways than those specified by the request, it <strong>MUST</strong> return a <code>200
+OK</code> response. The response document <strong>MUST</strong> include a representation of the
+updated relationship(s).</p>
+<p>A server <strong>MUST</strong> return a <code>200 OK</code> status code if an update is successful,
+the client's current data remain up to date, and the server responds
+only with top-level [meta] data. In this case the server <strong>MUST NOT</strong>
+include a representation of the updated relationship(s).</p>
+<h5 id="403-forbidden_2"><a href="#crud-updating-relationship-responses-403" id="crud-updating-relationship-responses-403" class="headerlink"></a> 403 Forbidden</h5>
+<p>A server <strong>MUST</strong> return <code>403 Forbidden</code> in response to an unsupported request
+to update a relationship.</p>
+<h5 id="other-responses_2"><a href="#crud-updating-relationship-responses-other" id="crud-updating-relationship-responses-other" class="headerlink"></a> Other Responses</h5>
+<p>A server <strong>MAY</strong> respond with other HTTP status codes.</p>
+<p>A server <strong>MAY</strong> include [error details] with error responses.</p>
+<p>A server <strong>MUST</strong> prepare responses, and a client <strong>MUST</strong> interpret
+responses, in accordance with
+<a href="http://tools.ietf.org/html/rfc7231"><code>HTTP semantics</code></a>.</p>
+<h3 id="deleting-resources"><a href="#crud-deleting" id="crud-deleting" class="headerlink"></a> Deleting Resources</h3>
+<p>An individual resource can be <em>deleted</em> by making a <code>DELETE</code> request to the
+resource's URL:</p>
+<pre><code class="language-http">DELETE /photos/1 HTTP/1.1
+Accept: application/vnd.api+json
+</code></pre>
+<h4 id="responses_3"><a href="#crud-deleting-responses" id="crud-deleting-responses" class="headerlink"></a> Responses</h4>
+<h5 id="202-accepted_3"><a href="#crud-deleting-responses-202" id="crud-deleting-responses-202" class="headerlink"></a> 202 Accepted</h5>
+<p>If a deletion request has been accepted for processing, but the processing has
+not been completed by the time the server responds, the server <strong>MUST</strong>
+return a <code>202 Accepted</code> status code.</p>
+<h5 id="204-no-content_3"><a href="#crud-deleting-responses-204" id="crud-deleting-responses-204" class="headerlink"></a> 204 No Content</h5>
+<p>A server <strong>MUST</strong> return a <code>204 No Content</code> status code if a deletion
+request is successful and no content is returned.</p>
+<h5 id="200-ok_2"><a href="#crud-deleting-responses-200" id="crud-deleting-responses-200" class="headerlink"></a> 200 OK</h5>
+<p>A server <strong>MUST</strong> return a <code>200 OK</code> status code if a deletion request is
+successful and the server responds with only top-level [meta] data.</p>
+<h5 id="404-not-found_2"><a href="#crud-deleting-responses-404" id="crud-deleting-responses-404" class="headerlink"></a> 404 NOT FOUND</h5>
+<p>A server <strong>SHOULD</strong> return a <code>404 Not Found</code> status code if a deletion request fails
+due to the resource not existing.</p>
+<h5 id="other-responses_3"><a href="#crud-deleting-responses-other" id="crud-deleting-responses-other" class="headerlink"></a> Other Responses</h5>
+<p>A server <strong>MAY</strong> respond with other HTTP status codes.</p>
+<p>A server <strong>MAY</strong> include [error details] with error responses.</p>
+<p>A server <strong>MUST</strong> prepare responses, and a client <strong>MUST</strong> interpret
+responses, in accordance with
+<a href="http://tools.ietf.org/html/rfc7231"><code>HTTP semantics</code></a>.</p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../fetching-data/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Fetching data" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Fetching data
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../query-parameters/" class="md-footer__link md-footer__link--next" aria-label="Next: Query parameters" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Query parameters
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.sections", "navigation.top", "search.highlight"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
